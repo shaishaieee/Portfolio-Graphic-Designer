@@ -1,0 +1,183 @@
+@use "../abstract" as *;
+@use "../base" as *;
+@use "../component/" as *;
+@use "../layout/" as *;
+
+.banner{
+    &__wrapper{
+        min-height: 80rem;
+        @include flex (start, center);
+    }
+
+    small {
+        font-size: clamp(6rem, 6vw, 10rem);
+        opacity: 0.5;
+        font-weight: bold;
+    }
+
+    h1{
+        font-size: clamp(8rem, 6vw, 15rem);
+        line-height: 1;
+        text-transform: uppercase;
+        @include flex(flex-start, flex-end);
+    }
+    span{
+        width: 1.5rem;
+        height: 1.5rem;
+        background: $clr-accent;
+        display: block;
+        transform: translate(2rem, -2rem);
+    }
+
+}
+
+.about{
+    &__wrapper{
+        
+        @include unevenGrid(.5fr 1fr, 7rem);
+
+    }
+    
+    &__image {
+        position: relative;
+        isolation: isolate;
+        &::after{
+            content: '';
+            position: absolute;
+            top: 3rem;
+            left: 3rem;
+            border: .4rem solid $clr-accent;
+            background-color: transparent;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+
+        }
+
+        @include mediaQuery{
+            display: flex;
+            flex-direction: column;
+        }
+
+    }
+
+    &__contact {
+        @include grid(1);
+
+        @include mediaQuery{
+            @include grid(2);
+        }
+
+    }
+}
+
+.skills{
+    &__wrapper{
+        @include grid(1);
+        
+
+        @include mediaQuery{
+            @include grid(2);
+            grid-column-gap: 10rem;
+        }
+    }
+
+    .skillbar{
+        width: 100%;
+        height: 1.5rem;
+        background-color: #363636;
+        position: relative;
+        &::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 10%;
+            height: 100%;
+            background-color: $clr-accent;
+        }
+    }
+    
+    .skillbar.w-50::before{
+        width: 50%;
+    }
+}
+
+.portfolio{
+    &__img{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 5rem;
+        img{
+            @include imgCover(200px, 200px)
+        }
+    }
+
+    ul {
+        flex-direction: column;
+        gap: unset;
+        @include mediaQuery{
+            flex-direction: row;
+            gap: 6rem;
+        }
+    }
+}
+
+.services {
+    &__wrapper {
+        @include grid(1);
+        grid-gap: 5rem;
+        
+
+        @include mediaQuery{
+            @include grid(3);
+            grid-gap: 5rem;
+        }
+    }
+
+    &__card{
+        i{
+            font-size: 3rem;
+
+        }
+
+        h5{
+            font-size: 2rem;
+        }
+    }
+}
+
+.contactme{
+    h2{
+        font-size: clamp(3rem, 6vw, 8rem);
+
+    }
+    &__wrapper{
+        @include grid(1);
+        grid-column-gap: 3rem;
+        padding-left: 30%;
+
+        @include mediaQuery{
+            @include grid(3);
+            padding-left: unset;
+            justify-items: center;
+        }
+        
+    }
+
+    &__content{
+        i{
+            padding-top: 0.5rem;
+        }
+        display: flex;
+        gap: 0.5rem;
+    }
+
+     a{
+      background-color: $clr-white;
+      color: $clr-accent;
+      padding: 1.5rem;
+      justify-items: center;
+    }
+}
